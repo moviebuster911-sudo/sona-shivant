@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Result - WhatsApp Viewer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="{% if theme %}theme-{{ theme }}{% endif %}">
+    <div class="result-container">
+        <div class="result-header">
+            <h1>Chat Visualization</h1>
+            <a href="/" class="btn-back">← Back to Upload</a>
+        </div>
+
+        <div class="result-content">
+            <div class="chat-info">
+                <h2>Users in Chat</h2>
+                <div class="users-list">
+                    {% for user in users %}
+                    <div class="user-badge">{{ user }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="chat-display">
+                {{ chat_content|safe }}
+            </div>
+        </div>
+    </div>
+
+    <script src="/script.js"></script>
+</body>
+</html>
