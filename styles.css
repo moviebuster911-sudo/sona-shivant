@@ -1,7 +1,7 @@
 :root {
-    /* Light mode WhatsApp palette */
+    /* WhatsApp Light Mode Palette */
     --app-bg: #FFFFFF;
-    --chat-wallpaper: #F7F7F7;
+    --chat-wallpaper: #FFFBF8;
     --incoming-bubble: #FFFFFF;
     --outgoing-bubble: #DCF8C6;
     --primary-green: #25D366;
@@ -11,16 +11,6 @@
     --secondary-text: #374151;
     --tertiary-muted: #6B7280;
     --divider: #E5E7EB;
-    
-    /* Legacy colors (kept for compatibility) */
-    --bg: #F7F7F7;
-    --surface: #FFFFFF;
-    --surface-strong: #FFFFFF;
-    --text: #111827;
-    --text-muted: #374151;
-    --primary: #25D366;
-    --secondary: #128C7E;
-    --border: rgba(0, 0, 0, 0.08);
 }
 
 * {
@@ -29,12 +19,13 @@
 
 html, body {
     height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
-    background: linear-gradient(135deg, #0f9b76 0%, #51c7a7 100%);
+    background: var(--app-bg);
     color: var(--main-text);
 }
 
@@ -47,23 +38,26 @@ body {
 
 /* Top Bar */
 .topbar {
-    background: rgba(255, 255, 255, 0.18);
-    border: 1px solid rgba(255, 255, 255, 0.35);
-    border-radius: 20px;
-    padding: 24px;
-    margin-bottom: 20px;
-    backdrop-filter: blur(12px);
+    background: var(--app-bg);
+    border-bottom: 1px solid var(--divider);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .topbar h1 {
     margin: 0 0 8px;
-    font-size: 28px;
+    font-size: 26px;
+    font-weight: 700;
     color: var(--main-text);
 }
 
 .topbar p {
     margin: 0;
+    font-size: 14px;
     color: var(--tertiary-muted);
+    font-weight: 400;
 }
 
 .content {
@@ -72,32 +66,33 @@ body {
 }
 
 /* Upload Panel */
-.upload-panel,
-.chat-frame {
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 24px;
-    border: 1px solid rgba(0, 0, 0, 0.08);
+.upload-panel {
+    background: var(--app-bg);
+    border-radius: 16px;
+    border: 1px solid var(--divider);
     padding: 24px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
 }
 
 .file-label {
-    display: inline-block;
+    display: block;
     width: 100%;
     margin-bottom: 16px;
     padding: 16px;
-    border: 2px dashed rgba(0, 0, 0, 0.12);
-    border-radius: 16px;
-    background: #fbfbfb;
-    color: var(--tertiary-muted);
+    border: 2px dashed var(--divider);
+    border-radius: 12px;
+    background: #FAFBFC;
+    color: var(--secondary-text);
     cursor: pointer;
     text-align: center;
     font-weight: 500;
+    font-size: 14px;
     transition: all 0.2s ease;
 }
 
 .file-label:hover {
     border-color: var(--primary-green);
-    background: rgba(37, 211, 102, 0.05);
+    background: rgba(37, 211, 102, 0.04);
 }
 
 .file-label input {
@@ -115,12 +110,13 @@ body {
     font-size: 14px;
     background: var(--app-bg);
     color: var(--main-text);
-    transition: border-color 0.2s ease;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 #pasteText:focus {
     outline: none;
     border-color: var(--primary-green);
+    box-shadow: inset 0 0 0 2px rgba(37, 211, 102, 0.1);
 }
 
 .options-row {
@@ -133,7 +129,7 @@ body {
 .primary-btn,
 .secondary-btn {
     border: none;
-    border-radius: 12px;
+    border-radius: 8px;
     padding: 12px 24px;
     font-size: 14px;
     font-weight: 600;
@@ -144,11 +140,12 @@ body {
 .primary-btn {
     background: var(--primary-green);
     color: white;
+    box-shadow: 0 2px 8px rgba(37, 211, 102, 0.2);
 }
 
 .primary-btn:hover {
     background: var(--brand-teal);
-    box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
 }
 
 .primary-btn:active {
@@ -162,7 +159,7 @@ body {
 }
 
 .secondary-btn:hover {
-    background: #f5f5f5;
+    background: #FAFBFC;
     border-color: var(--secondary-text);
 }
 
@@ -174,7 +171,7 @@ body {
 }
 
 .error {
-    color: #b00020;
+    color: #D32F2F;
     min-height: 1.25em;
     font-size: 13px;
 }
@@ -184,6 +181,7 @@ body {
     display: block;
     width: 100%;
     font-size: 14px;
+    color: var(--main-text);
 }
 
 .author-select select {
@@ -192,9 +190,9 @@ body {
     border: 1px solid var(--divider);
     border-radius: 8px;
     background: var(--app-bg);
-    color: var(--main-text);
     font-family: inherit;
     cursor: pointer;
+    transition: border-color 0.2s ease;
 }
 
 .author-select select:focus {
@@ -217,6 +215,7 @@ body {
 .chat-header-top h2 {
     margin: 0;
     font-size: 18px;
+    font-weight: 600;
     color: var(--main-text);
 }
 
@@ -224,6 +223,15 @@ body {
     margin: 4px 0 0;
     color: var(--tertiary-muted);
     font-size: 13px;
+}
+
+/* Chat Frame */
+.chat-frame {
+    background: var(--app-bg);
+    border-radius: 16px;
+    border: 1px solid var(--divider);
+    padding: 20px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
 }
 
 /* Phone Frame */
@@ -234,7 +242,7 @@ body {
     margin: 0 auto;
     background: var(--app-bg);
     border-radius: 40px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
     position: relative;
     display: flex;
     flex-direction: column;
@@ -262,11 +270,11 @@ body {
     justify-content: space-between;
     background: var(--brand-teal);
     color: white;
-    padding: 8px 12px;
+    padding: 12px 16px;
     margin-top: 26px;
     flex-shrink: 0;
-    height: 56px;
-    min-height: 56px;
+    height: 60px;
+    min-height: 60px;
 }
 
 .header-left {
@@ -286,15 +294,16 @@ body {
 }
 
 .avatar {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.25);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 24px;
+    font-size: 26px;
     flex-shrink: 0;
+    color: white;
 }
 
 .contact-text {
@@ -308,6 +317,7 @@ body {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    color: white;
 }
 
 .contact-status {
@@ -316,6 +326,7 @@ body {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .header-right {
@@ -338,19 +349,19 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
-    min-width: 36px;
-    min-height: 36px;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
     flex-shrink: 0;
 }
 
 .icon-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.15);
 }
 
 .icon-btn:active {
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.25);
 }
 
 .back-btn {
@@ -363,20 +374,22 @@ body {
     display: flex;
     align-items: center;
     gap: 8px;
-    background: #ffffff;
+    background: #FFFFFF;
     color: var(--main-text);
-    padding: 8px 10px;
+    padding: 8px 12px;
     flex-shrink: 0;
     height: 56px;
     min-height: 56px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    border-bottom: 1px solid var(--divider);
     animation: slideDown 0.2s ease;
 }
+
 .search-bar .icon-btn,
 .search-bar .search-nav-btn {
     color: var(--brand-teal);
     background: rgba(37, 211, 102, 0.08);
 }
+
 .search-bar .icon-btn:hover,
 .search-bar .search-nav-btn:hover {
     background: rgba(37, 211, 102, 0.16);
@@ -462,7 +475,7 @@ body {
     flex: 1;
     background: var(--chat-wallpaper);
     overflow-y: auto;
-    padding: 12px 10px;
+    padding: 12px 12px;
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -478,12 +491,12 @@ body {
 }
 
 .screen::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.15);
     border-radius: 3px;
 }
 
 .screen::-webkit-scrollbar-thumb:hover {
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.25);
 }
 
 /* Empty Search State */
@@ -498,7 +511,7 @@ body {
     color: var(--tertiary-muted);
     text-align: center;
     padding: 24px;
-    background: rgba(255, 255, 255, 0.92);
+    background: rgba(255, 255, 255, 0.95);
     border-radius: 20px;
     pointer-events: none;
     z-index: 2;
@@ -517,7 +530,7 @@ body {
 /* Messages */
 .message {
     display: flex;
-    margin: 2px 0;
+    margin: 4px 0;
     width: 100%;
     animation: slideIn 0.3s ease;
 }
@@ -555,7 +568,7 @@ body {
 }
 
 .bubble {
-    max-width: 85%;
+    max-width: 78%;
     padding: 8px 12px;
     border-radius: 18px;
     background: var(--incoming-bubble);
@@ -589,6 +602,7 @@ body {
     font-size: 13px;
     line-height: 1.4;
     word-break: break-word;
+    color: var(--main-text);
 }
 
 /* Search Highlight */
@@ -621,17 +635,21 @@ body {
     color: var(--tertiary-muted);
 }
 
+.message.right .message-status.read {
+    color: #0084FF;
+}
+
 /* Composer Bar */
 .composer-bar {
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: 8px 12px;
+    padding: 10px 12px;
     background: var(--app-bg);
     border-top: 1px solid var(--divider);
     flex-shrink: 0;
-    height: 56px;
-    min-height: 56px;
+    height: 60px;
+    min-height: 60px;
 }
 
 .composer-icon {
@@ -647,10 +665,10 @@ body {
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    width: 36px;
-    height: 36px;
-    min-width: 36px;
-    min-height: 36px;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
 }
 
 .composer-icon:hover {
@@ -669,18 +687,19 @@ body {
     font-size: 13px;
     font-family: inherit;
     color: var(--main-text);
-    background: #f5f5f5;
+    background: #FAFBFC;
     outline: none;
     transition: all 0.2s ease;
+}
+
+.message-input::placeholder {
+    color: var(--tertiary-muted);
 }
 
 .message-input:focus {
     border-color: var(--primary-green);
     background: var(--app-bg);
-}
-
-.message-input::placeholder {
-    color: var(--tertiary-muted);
+    box-shadow: inset 0 0 0 1px rgba(37, 211, 102, 0.1);
 }
 
 .send-btn {
@@ -689,21 +708,22 @@ body {
     color: white;
     cursor: pointer;
     font-size: 16px;
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    min-width: 36px;
-    min-height: 36px;
+    min-width: 40px;
+    min-height: 40px;
     transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(37, 211, 102, 0.2);
 }
 
 .send-btn:hover {
     background: var(--brand-teal);
-    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
 }
 
 .send-btn:active {
@@ -735,7 +755,7 @@ body {
     }
 
     .bubble {
-        max-width: 90%;
+        max-width: 85%;
     }
 
     .chat-header-top {
@@ -765,18 +785,18 @@ body {
     }
 
     .icon-btn {
-        width: 32px;
-        height: 32px;
-        min-width: 32px;
-        min-height: 32px;
+        width: 36px;
+        height: 36px;
+        min-width: 36px;
+        min-height: 36px;
     }
 
     .composer-icon,
     .send-btn {
-        width: 32px;
-        height: 32px;
-        min-width: 32px;
-        min-height: 32px;
+        width: 36px;
+        height: 36px;
+        min-width: 36px;
+        min-height: 36px;
     }
 }
 
@@ -794,9 +814,9 @@ body {
     }
 
     .whatsapp-header {
-        padding: 6px 8px;
-        height: 48px;
-        min-height: 48px;
+        padding: 8px 12px;
+        height: 52px;
+        min-height: 52px;
         margin-top: 22px;
     }
 
@@ -807,9 +827,9 @@ body {
     }
 
     .avatar {
-        width: 36px;
-        height: 36px;
-        font-size: 20px;
+        width: 40px;
+        height: 40px;
+        font-size: 22px;
     }
 
     .contact-name {
@@ -825,32 +845,32 @@ body {
     }
 
     .bubble {
-        max-width: 88%;
+        max-width: 86%;
         padding: 6px 10px;
     }
 
     .composer-bar {
-        padding: 6px 8px;
+        padding: 8px 10px;
         gap: 6px;
-        height: 48px;
-        min-height: 48px;
+        height: 52px;
+        min-height: 52px;
     }
 
     .composer-icon,
     .send-btn {
-        width: 32px;
-        height: 32px;
+        width: 36px;
+        height: 36px;
         font-size: 16px;
         padding: 6px;
-        min-width: 32px;
-        min-height: 32px;
+        min-width: 36px;
+        min-height: 36px;
     }
 
     .icon-btn {
-        width: 28px;
-        height: 28px;
-        min-width: 28px;
-        min-height: 28px;
+        width: 32px;
+        height: 32px;
+        min-width: 32px;
+        min-height: 32px;
         font-size: 16px;
         padding: 6px;
     }
